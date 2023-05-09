@@ -23,6 +23,11 @@ client.on('messageCreate', async (message) => {
   if (message.author.bot || !message.content.startsWith(prefix)) return
 
   const args = message.content.slice(prefix.length).trim().split(/ +/)
+
+  if (!args[0])
+    return message.channel.send(
+      'I am a translator bot created by SenkuBhai. Type " !translate help " for help.'
+    )
   const texts = args.slice(2).join(' ')
   const sourceLang = args[0]
   const targetLang = args[1]
